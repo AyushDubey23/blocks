@@ -4,11 +4,11 @@ import { Canvas } from "@react-three/fiber"
 import { OrbitControls, Environment } from "@react-three/drei"
 import { useRef, useState, useEffect } from "react"
 import * as THREE from "three"
-import { ExternalLink, Linkedin, Instagram } from "lucide-react"
+import { ExternalLink, Linkedin, Instagram, Loader2 } from "lucide-react"
 
 const isMobile = () => {
   if (typeof window === "undefined") return false
-  return /Android|webOS|iPhone|iPad|iPod, BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 }
 
 const BoxWithEdges = ({ position }) => {
@@ -199,9 +199,46 @@ const Scene = () => {
   )
 }
 
+const LoadingScreen = () => {
+  return (
+    <div className="fixed inset-0 bg-gray-900 flex items-center justify-center z-50">
+      <div className="text-center">
+        <div className="mb-8">
+          <Loader2 className="w-12 h-12 text-blue-500 animate-spin mx-auto mb-4" />
+          <h1 className="text-4xl font-bold text-white mb-2">AYUSH DUBEY</h1>
+        </div>
+        <div className="w-64 h-1 bg-gray-700 rounded-full overflow-hidden">
+          <div className="h-full bg-blue-500 rounded-full animate-pulse"></div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Component() {
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  useEffect(() => {
+    // Set loaded to true immediately, no artificial delay
+    setIsLoaded(true)
+  }, [])
+
   return (
     <div className="w-full h-screen bg-gray-900 relative">
+      {!isLoaded && (
+        <div className="fixed inset-0 bg-gray-900 flex items-center justify-center z-50">
+          <div className="text-center">
+            <div className="mb-8">
+              <Loader2 className="w-12 h-12 text-blue-500 animate-spin mx-auto mb-4" />
+              <h1 className="text-4xl font-bold text-white mb-2">AYUSH DUBEY</h1>
+            </div>
+            <div className="w-64 h-1 bg-gray-700 rounded-full overflow-hidden">
+              <div className="h-full bg-blue-500 rounded-full animate-pulse"></div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <Canvas camera={{ position: [10.047021, -0.127436, -11.137374], fov: 50 }}>
         <Scene />
       </Canvas>
@@ -229,7 +266,7 @@ export default function Component() {
         </a>
 
         <a
-          href="https://www.instagram.com/_ayushhdubey_/"
+          href="https://www.instagram.com/ayushhdubey/"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all duration-300"
