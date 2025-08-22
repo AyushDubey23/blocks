@@ -17,7 +17,7 @@ const BoxWithEdges = ({ position }) => {
       <mesh>
         <boxGeometry args={[0.5, 0.5, 0.5]} />
         <meshPhysicalMaterial
-          color="#0070f3"
+          color="#dc2626"
           roughness={0.1}
           metalness={0.8}
           transparent={true}
@@ -28,7 +28,7 @@ const BoxWithEdges = ({ position }) => {
       </mesh>
       <lineSegments>
         <edgesGeometry args={[new THREE.BoxGeometry(0.5, 0.5, 0.5)]} />
-        <lineBasicMaterial color="#214dbd" linewidth={2} />
+        <lineBasicMaterial color="#991b1b" linewidth={2} />
       </lineSegments>
     </group>
   )
@@ -266,7 +266,7 @@ export default function Component() {
         </a>
 
         <a
-          href="https://www.instagram.com/_ayushhdubey_/"
+          href="https://www.instagram.com/ayushhdubey/"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-lg hover:bg-white/20 transition-all duration-300"
